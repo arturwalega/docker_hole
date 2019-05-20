@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>DockerHole.Shared</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.0</Version>
+    <Authors>Artur Walega</Authors>
+    <Product>DockerHole.Shared</Product>
+    <Description>SHared lib for DockerHole</Description>
+    <!-- <OutputType>exe</OutputType> -->
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
