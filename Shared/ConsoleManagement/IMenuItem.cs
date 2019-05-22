@@ -1,6 +1,6 @@
 namespace Shared.ConsoleManagement
 {
-    interface IMenuItem
+    public interface IMenuItem
     {
         string ShowMenuItemString();
         void EnterOption();

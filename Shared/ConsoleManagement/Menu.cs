@@ -11,10 +11,10 @@ namespace Shared.ConsoleManagement
 
         public Menu(Type currentClassInfo)
         {
+            this.currentClassInfo = currentClassInfo;
             options = new List<IMenuItem>();
             List<string> objects = GetAllEntities();
-            AssignObjects(objects);
-            this.currentClassInfo = currentClassInfo;
+            AssignObjects(objects);          
         }
 
         void ShowOptions()
@@ -87,24 +87,26 @@ namespace Shared.ConsoleManagement
 
         private List<string> GetAllEntities()
         {
+            System.Console.WriteLine($"Test: {0}", this.currentClassInfo.Namespace);
             return AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
-                 .Where(x => typeof(IMenuItem).IsAssignableFrom(x) && x.Namespace.Equals(currentClassInfo.Namespace) && !x.IsInterface && !x.IsAbstract)
+                 .Where(x => typeof(IMenuItem).IsAssignableFrom(x) && x.Namespace.Contains(currentClassInfo.Namespace) && !x.IsInterface && !x.IsAbstract)
                  .Select(x => x.Name).ToList();
         }
 
         private void AssignObjects(List<string> objectsNames)
         {
             int counter = 1;
-            string namespaceName = typeof(Menu).Namespace;
+            string namespaceName = currentClassInfo.Namespace.ToString();
             foreach (var item in objectsNames)
             {
-                var type = Type.GetType(namespaceName + '.' + item);
+                var className = namespaceName + '.' + "Options." + item + ", " + namespaceName + ",  Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
+                var type = Type.GetType(className);
                 var myObject = (IMenuItem)Activator.CreateInstance(type);
                 myObject.SetID(counter);
                 options.Add(myObject);
                 counter++;
             }
         }
-    }
+    }    
 }
 
