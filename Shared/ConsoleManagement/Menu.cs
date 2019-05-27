@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Shared.ConsoleManagement
 {
@@ -28,7 +29,7 @@ namespace Shared.ConsoleManagement
             Console.WriteLine("0. Exit");
         }
 
-        int ChooseOption()
+        async Task<int> ChooseOptionAsync()
         {
             int selectedOption = ReadIntInput();
             if (selectedOption == 0)
@@ -37,7 +38,7 @@ namespace Shared.ConsoleManagement
             if (item != null)
             {
                 Console.Clear();
-                item.EnterOption();
+                await item.EnterOptionAsync();
                 Console.Clear();
             }
             else
@@ -75,12 +76,12 @@ namespace Shared.ConsoleManagement
             return null;
         }
 
-        public void Run()
+        public async Task RunAsync()
         {
             while (true)
             {
                 ShowOptions();
-                if (ChooseOption() == -1)
+                if (await ChooseOptionAsync().ConfigureAwait(false) == -1)
                     return;
             }
         }

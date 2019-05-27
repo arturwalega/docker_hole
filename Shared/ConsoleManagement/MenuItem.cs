@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Shared.ConsoleManagement
 {
     public abstract class MenuItem : IMenuItem
@@ -10,6 +12,6 @@ namespace Shared.ConsoleManagement
             this.id = id;
         }
         public abstract string ShowMenuItemString();
-        public abstract void EnterOption();
+        public abstract Task EnterOptionAsync();
     }
 }

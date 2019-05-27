@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AdminClient.Options;
 using Shared.ConsoleManagement;
 
@@ -6,13 +7,12 @@ namespace AdminClient
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            var test = typeof(ShareImage).AssemblyQualifiedName;
-            System.Console.WriteLine($"No fajnie: {0}", test.ToString());  
+            var test = typeof(Program).AssemblyQualifiedName;
             Menu menu = new Menu(typeof(Program));
-            
-            menu.Run();
+
+            await menu.RunAsync();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Shared.ConsoleManagement;
 
 namespace AdminClient
@@ -7,7 +8,11 @@ namespace AdminClient
         public Start()
         {
             Menu menu = new Menu(this.GetType());
-            menu.Run();
+        }
+
+        private static async Task StartAsync(Menu menu)
+        {
+            await menu.RunAsync();
         }
     }
 }
