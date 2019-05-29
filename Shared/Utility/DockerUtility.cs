@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Docker.DotNet;
 
 namespace Shared.Utility
 {
@@ -13,10 +12,6 @@ namespace Shared.Utility
                 name += item + " ";
             }
             return name;
-        }
-
-        public static DockerClient CreateDockerClient(){
-            return new DockerClientConfiguration(new Uri("http://localhost:2375")).CreateClient();
         }
     }
 }

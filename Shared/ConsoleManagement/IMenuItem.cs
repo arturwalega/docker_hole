@@ -7,6 +7,6 @@ namespace Shared.ConsoleManagement
         string ShowMenuItemString();
         void SetID(int id);
         int GetID();
-        Task EnterOptionAsync();
+        void EnterOption();
     }
 }

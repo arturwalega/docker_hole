@@ -7,12 +7,12 @@ namespace AdminClient
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             var test = typeof(Program).AssemblyQualifiedName;
             Menu menu = new Menu(typeof(Program));
 
-            await menu.RunAsync();
+            menu.Run();
         }
     }
 }

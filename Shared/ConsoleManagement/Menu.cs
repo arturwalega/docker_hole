@@ -29,7 +29,7 @@ namespace Shared.ConsoleManagement
             Console.WriteLine("0. Exit");
         }
 
-        async Task<int> ChooseOptionAsync()
+        int ChooseOption()
         {
             int selectedOption = ReadIntInput();
             if (selectedOption == 0)
@@ -38,7 +38,7 @@ namespace Shared.ConsoleManagement
             if (item != null)
             {
                 Console.Clear();
-                await item.EnterOptionAsync();
+                item.EnterOption();
                 Console.Clear();
             }
             else
@@ -76,12 +76,12 @@ namespace Shared.ConsoleManagement
             return null;
         }
 
-        public async Task RunAsync()
+        public void Run()
         {
             while (true)
             {
                 ShowOptions();
-                if (await ChooseOptionAsync().ConfigureAwait(false) == -1)
+                if (ChooseOption()== -1)
                     return;
             }
         }

@@ -12,6 +12,6 @@ namespace Shared.ConsoleManagement
             this.id = id;
         }
         public abstract string ShowMenuItemString();
-        public abstract Task EnterOptionAsync();
+        public abstract void EnterOption();
     }
 }
